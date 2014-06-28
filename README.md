@@ -35,6 +35,6 @@ GitHub: https://github.com/Lanfei
 
 OSChina: http://git.oschina.net/lanfei
 
-Weibo: https://weibo.com/gcchang
+Weibo: http://weibo.com/gcchang
 
-Blog: https://www.clanfei.com
+Blog: http://www.clanfei.com
