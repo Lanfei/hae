@@ -30,6 +30,9 @@ Who
 张耕畅，网名蓝飞，九二年技术宅，热衷技术，热爱生活，中期目标是成为一个全栈工程师。
 
 GitHub: https://github.com/Lanfei
+
 OSChina: http://git.oschina.net/lanfei
+
 Weibo: https://weibo.com/gcchang
+
 Blog: https://www.clanfei.com
