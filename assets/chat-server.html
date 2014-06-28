@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat Server</title>
+	<style type="text/css">
+	#content{
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: 0;
+		border: 0;
+		color: #888;
+		resize: none;
+		outline: none;
+		font-size: 14px;
+		position: absolute;
+		background: #272822;
+		font-family: 'Monaco', 'Consolas', 'monospace', 'Microsoft Yahei', '微软雅黑';
+	}
+	</style>
+</head>
+<body>
+<textarea id="content" readonly></textarea>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script>
+	var port = 5223;
+	var connList = [];
+	var server = HAE.SocketServer();
+	var showMessage = function(message){
+		$('#content').val($('#content').val() + '\n' + message).scrollTop(99999);
+	};
+	server.addEvent({
+		open: function(){
+			showMessage('[open]');
+		},
+		connect: function(conn){
+			connList.push(conn);
+			showMessage('[connect]');
+		},
+		message: function(conn, message){
+			for(var i = 0; i < connList.length; ++i){
+				connList[i].send(message);
+			}
+			showMessage('[message] ' + message);
+		},
+		disconnect: function(conn){
+			for(var i = 0; i < connList.length; ++i){
+				if(connList[i] == conn){
+					connList.splice(i, 1);
+					break;
+				}
+			}
+			showMessage('[disconnect]');
+		},
+		close: function(){
+			for(var i = 0; i < connList.length; ++i){
+				connList[i].close();
+			}
+			showMessage('[close]');
+		},
+		error: function(errno, message){
+			showMessage('[error] ' + message);
+		}
+	});
+	$('#content').val('[listen] ' + port);
+	server.listen(port);
+	$(window).bind({
+		beforeunload: server.close
+	});
+	HAE.app.show();
+</script>
+</body>
+</html>

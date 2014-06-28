@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sinmple Editor [*]</title>
+	<style>
+	#editor { 
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		position: absolute;
+		font-size: 14px;
+	}
+</style>
+</head>
+<body>
+<div id="editor">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+	&lt;meta charset="UTF-8"&gt;
+	&lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	Open: Ctrl + O
+	Save: Ctrl + S
+&lt;/body&gt;
+&lt;/html&gt;
+</div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="http://cdn.staticfile.org/ace/1.1.3/ace.js"></script>
+<script>
+var editor, filename;
+ace.config.loadModule("ace/ext/emmet", function() {
+	ace.require("ace/lib/net").loadScript("http://nightwing.github.io/emmet-core/emmet.js", function() {
+		editor = ace.edit('editor');
+		editor.setShowPrintMargin(false);
+		editor.setTheme("ace/theme/monokai");
+		editor.getSession().setMode("ace/mode/html");
+		editor.setOption("enableEmmet", true);
+		editor.on('change', function(){
+			HAE.app.setModified(true);
+		});
+	});
+});
+var save = function(){
+	var file, fileDialog;
+	if(! filename){
+		fileDialog = new HAE.FileDialog();
+		fileDialog.setAcceptMode(1);
+		fileDialog.setFilters('All Files (*.*);;HTML (*.html *.htm)');
+		fileDialog.selectFilter('HTML (*.html *.htm)');
+		filename = fileDialog.exec();
+	}
+	if(filename){
+		file = new HAE.File(filename, 'w');
+		file.writeText(editor.getValue());
+		file.close();
+		HAE.app.setModified(false);
+	}
+};
+var open = function(){
+	var file, fileDialog;
+	fileDialog = new HAE.FileDialog();
+	fileDialog.addFilter('All Files (*.*)');
+	fileDialog.addFilter('HTML (*.html *.htm)');
+	fileDialog.selectFilter('HTML (*.html *.htm)');
+	filename = fileDialog.exec();
+	if(filename){
+		file = new HAE.File(filename);
+		editor.setValue(file.readText());
+		file.close();
+		HAE.app.setModified(false);
+	}
+};
+HAE.app.addEvent({
+	close: function(){
+		return HAE.app.isModified() && confirm('Save or not?') && save();
+	}
+});
+$(document).bind({
+	keydown: function(event){
+		if(event.ctrlKey){
+			if(event.keyCode == 83){
+				save();
+			}else if(event.keyCode == 79){
+				open();
+			}
+		}
+	}
+});
+HAE.app.setModified(true);
+HAE.app.show();
+</script>
+</body>
+</html>

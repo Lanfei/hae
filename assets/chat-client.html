@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat Client</title>
+	<style type="text/css">
+	body{
+		overflow: hidden;
+	}
+	#content{
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 30px;
+		margin: 0;
+		border: 0;
+		color: #888;
+		resize: none;
+		outline: none;
+		font-size: 14px;
+		position: absolute;
+		background: #272822;
+		font-family: 'Monaco', 'Consolas', 'monospace', 'Microsoft Yahei', '微软雅黑';
+	}
+	#message{
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: 0;
+		border: 0;
+		color: #888;
+		height: 30px;
+		outline: none;
+		font-size: 14px;
+		line-height: 30px;
+		position: absolute;
+		background: #333;
+		box-sizing: border-box;
+		border-top: 1px solid #555;
+		font-family: 'Monaco', 'Consolas', 'monospace', 'Microsoft Yahei', '微软雅黑';
+	}
+	</style>
+</head>
+<body>
+<textarea id="content" readonly></textarea>
+<input id="message" type="text" disabled>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script>
+	var host = 'localhost';
+	var port = 5223;
+	var client = HAE.SocketClient();
+	var nickname;
+	var showMessage = function(message){
+		$('#content').val($('#content').val() + '\n' + message).scrollTop(99999);
+	};
+	var sendMessage = function(message){
+		message && client.send(nickname + ': ' + message);
+	};
+	HAE.app.show();
+	client.addEvent({
+		open: function(){
+			showMessage('[open]');
+			nickname = prompt('Input your nickname:') || 'anonymous';
+			$('#message').prop('disabled', false);
+		},
+		message: function(message){
+			showMessage('[message] ' + message);
+		},
+		close: function(){
+			showMessage('[close]');
+			$('#message').prop('disabled', true);
+		},
+		error: function(errno, message){
+			showMessage('[error] ' + message);
+		}
+	});
+	$('#content').val('[connect] ' + host + ':' + port);
+	client.connect(host, port);
+	$(window).bind({
+		beforeunload: client.close
+	});
+	$('#message').bind({
+		keydown: function(event){
+			if(event.keyCode == 13){
+				sendMessage($(this).val().trim());
+				$(this).val('');
+			}
+		}
+	}).focus();
+</script>
+</body>
+</html>

@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Desktop Hybrid App Engine</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div id="wrap">
+		<header id="header">
+			<div id="logo">
+				<h1>HAE</h1>Welcome^_^
+			</div>
+			<div id="toolbar">
+				<button id="minimize">_</button><button id="maximize">□</button><button id="close">×</button>
+			</div>
+		</header>
+		<nav id="nav">
+			<ul class="list">
+				<li class="item item-cur" data-index="0">Introdution</li>
+				<li class="item" data-index="1">Demos</li>
+				<li class="item item-parent">API Document
+					<ul class="list">
+						<li class="item" data-index="2">manifest.json</li>
+						<li class="item" data-index="3">HAE</li>
+						<li class="item" data-index="4">HAE.app</li>
+						<li class="item" data-index="5">HAE.sys</li>
+						<li class="item" data-index="6">HAE.fs</li>
+						<li class="item" data-index="7">HAE.codec</li>
+						<li class="item" data-index="8">HAE.Window</li>
+						<li class="item" data-index="9">HAE.Dialog</li>
+						<li class="item" data-index="10">HAE.FileDialog</li>
+						<li class="item" data-index="11">HAE.Menu</li>
+						<li class="item" data-index="12">HAE.MenuItem</li>
+						<li class="item" data-index="13">HAE.TrayIcon</li>
+						<li class="item" data-index="14">HAE.File</li>
+						<li class="item" data-index="15">HAE.Downloader</li>
+						<li class="item" data-index="16">HAE.Process</li>
+						<li class="item" data-index="17">HAE.SocketServer</li>
+						<li class="item" data-index="18">HAE.SocketConn</li>
+						<li class="item" data-index="19">HAE.SocketClient</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<div id="main">
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">Introdution</h2>
+					<p class="sub-title">HAE介绍</p>
+				</header>
+				<section>
+					<h3>What？</h3>
+					<p class="intro"><abbr title="Hybrid App Engine">HAE</abbr>是一个轻量级的桌面Web应用程序引擎（Hybrid App Engine），它允许开发者使用HTML5，CSS3以及JavaScript等前端开发技术方便快速地进行桌面应用程序开发。</p>
+					<h3>Why？</h3>
+					<ul class="list">
+						<li class="item">开发简单</li>
+						<li class="item">易于调试</li>
+						<li class="item">无需编译</li>
+						<li class="item">跨平台</li>
+					</ul>
+					<h3>Whatever</h3>
+					<p class="intro">HAE的基础开发工作到这里也基本完成了，想要写些什么，却又不知从何说起。</p>
+					<p class="intro">曾经接触过Visual Basic，C++，Java，Adobe Air等桌面开发技术，但这些开发方式要么繁琐低效，要么依赖于环境，让人觉得作为一个程序员，竟然连编写一个简单的桌面应用程序给别人用都困难，让我等码(diao)农(si)情何以堪。</p>
+					<p class="intro">2010年，从『Web 已死』到HTML5、CSS3大热，前端开发逐渐吸引了我的目光，2012年豌豆荚2.0发布，内嵌webkit内核，让我看到了使用Web技术来开发桌面应用程序的可能性（当初说好的开源呢？）。</p>
+					<p class="intro">2014年1月，HAE项目正式启动，作为我的毕业设计，也作为我第一个真正意义上的开源作品。也曾想过使用CEF来开发，无奈C++基础实在太差，只好操起刚刚入门的Python，查着文档爬着坑，一边实习一边开始了开发工作。然而开发临近完成的时候，有道hex开源了，一度激动而又失落，激动是看到了国内有着跟我一样志同道合而又投身开源的人，失落是看到自己倾心的作品被别人提前做出来了，而且做的比我还底层（基于CEF），比我还完善（结合Node.js）。</p>
+					<p class="intro">无论如何，HAE终于与大家见面了，希望大家喜欢。</p>
+					<h3>Who</h3>
+					<p class="intro">张耕畅，网名蓝飞，九二年技术宅，热衷技术，热爱生活，中期目标是成为一个全栈工程师。</p>
+					<p class="intro">GitHub: <a target="_blank" href="https://github.com/Lanfei">https://github.com/Lanfei</a></p>
+					<p class="intro">OSChina: <a target="_blank" href="http://git.oschina.net/lanfei">http://git.oschina.net/lanfei</a></p>
+					<p class="intro">Weibo: <a target="_blank" href="http://weibo.com/gcchang">https://weibo.com/gcchang</a></p>
+					<p class="intro">Blog: <a target="_blank" href="http://www.clanfei.com">https://www.clanfei.com</a></p>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">Demos</h2>
+					<p class="sub-title">喜闻乐见的Demos</p>
+				</header>
+				<section>
+					<ul class="list demos">
+						<li class="item">
+							<a href="#" data-href="login.html">Login Window</a>
+							<p class="desc">一个登录窗口演示</p>
+						</li>
+						<li class="item">
+							<a href="#" data-href="animations.html">Animations</a>
+							<p class="desc">CSS3动画库应用于HAE的例子</p>
+						</li>
+						<li class="item">
+							<a href="#" data-href="editor.html">Simple Editor</a>
+							<p class="desc">利用开源项目快速实现支持语法高亮、Emmet插件的编辑器的例子</p>
+						</li>
+						<li class="item">
+							<a href="#" data-href="chat-server.html">Chat Server</a>
+							<p class="desc">聊天室服务端</p>
+						</li>
+						<li class="item">
+							<a href="#" data-href="chat-client.html">Chat Client</a>
+							<p class="desc">聊天室客户端，请配合聊天室服务端使用</p>
+						</li>
+						<li class="item">
+							<a href="javascript:alert('敬请期待')">More</a>
+							<p class="desc">更多Demo</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">manifest.json</h2>
+					<p class="sub-title">应用程序配置文件</p>
+				</header>
+				<h3>Intro</h3>
+				<p class="intro">应用程序的配置文件。</p>
+				<h3>Codes</h3>
+				<pre>{
+	'name': 'Hybrid App Engine',
+	'version': '1.0.0',
+	'description': '轻量级Web桌面应用引擎',
+	'path': 'assets/',
+	'icon': 'assets/img/icon.png',
+	'width': 800,
+	'height': 600,
+	'visible': True,
+	'resizable': True,
+	'frameless': False,
+	'transBackground': False
+}</pre>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE</h2>
+					<p class="sub-title">主模块</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于执行一些全局的引擎相关操作。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">String version()</code>
+							<p class="desc">获取版本号</p>
+						</li>
+						<li class="item">
+							<code class="name">String manifest(String name, String default = '')</code>
+							<p class="desc">获取Manifest</p>
+						</li>
+						<li class="item">
+							<code class="name">String normUrl(String url)</code>
+							<p class="desc">根据当前页面获取URL</p>
+						</li>
+						<li class="item">
+							<code class="name">void browse(String url)</code>
+							<p class="desc">打开浏览器</p>
+						</li>
+						<li class="item">
+							<code class="name">void setData(String name, String value)</code>
+							<p class="desc">保存本地数据</p>
+						</li>
+						<li class="item">
+							<code class="name">String getData(String name)</code>
+							<p class="desc">获取本地数据</p>
+						</li>
+						<li class="item">
+							<code class="name">void removeData(String name = null)</code>
+							<p class="desc">删除本地数据</p>
+						</li>
+						<li class="item">
+							<code class="name">void closeAllWindows()</code>
+							<p class="desc">关闭所有窗口</p>
+						</li>
+						<li class="item">
+							<code class="name">void clearCaches()</code>
+							<p class="desc">TODO 清除缓存</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.app</h2>
+					<p class="sub-title">当前窗口模块</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">Window类的一个实例，Window类实例化时产生，用于操作当前窗口。</p>
+				</section>
+				<section>
+					<h3>Properties</h3>
+					<ul class="list">
+						<li class="item">详见Window类。</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">详见Window类。</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">详见Window类。</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.sys</h2>
+					<p class="sub-title">系统模块</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于读取系统或应用程序信息或执行系统命令。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">String type()</code>
+							<p class="desc">获取系统类型</p>
+						</li>
+						<li class="item">
+							<code class="name">String platform()</code>
+							<p class="desc">获取系统平台</p>
+						</li>
+						<li class="item">
+							<code class="name">String arch()</code>
+							<p class="desc">获取系统位数</p>
+						</li>
+						<li class="item">
+							<code class="name">String release()</code>
+							<p class="desc">获取系统版本</p>
+						</li>
+						<li class="item">
+							<code class="name">String version()</code>
+							<p class="desc">获取系统版本</p>
+						</li>
+						<li class="item">
+							<code class="name">String machine()</code>
+							<p class="desc">获取机器类型</p>
+						</li>
+						<li class="item">
+							<code class="name">String processor()</code>
+							<p class="desc">获取CPU信息</p>
+						</li>
+						<li class="item">
+							<code class="name">String hostname()</code>
+							<p class="desc">获取当前用户名</p>
+						</li>
+						<li class="item">
+							<code class="name">String uuid()</code>
+							<p class="desc">获取UUID</p>
+						</li>
+						<li class="item">
+							<code class="name">String argvs()</code>
+							<p class="desc">获取应用程序参数</p>
+						</li>
+						<li class="item">
+							<code class="name">String exec(String command)</code>
+							<p class="desc">执行命令并返回输出内容</p>
+						</li>
+						<li class="item">
+							<code class="name">String system(String command)</code>
+							<p class="desc">执行命令并返回</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean run(String path)</code>
+							<p class="desc">打开文件</p>
+						</li>
+						<li class="item">
+							<code class="name">void exit(int message = 0)</code>
+							<p class="desc">退出</p>
+						</li>
+						<li class="item">
+							<code class="name">void reboot()</code>
+							<p class="desc">TODO 重启</p>
+						</li>
+						<li class="item">
+							<code class="name">void shutdown()</code>
+							<p class="desc">TODO 关机</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.fs</h2>
+					<p class="sub-title">文件系统模块</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">赋予JavaScript文件系统操作权限。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">String listDir(String dirname = '.')</code>
+							<p class="desc">读取目录内容</p>
+						</li>
+						<li class="item">
+							<code class="name">String resourcesPath()</code>
+							<p class="desc">获取资源目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String desktopPath()</code>
+							<p class="desc">获取桌面目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String documentsPath()</code>
+							<p class="desc">获取文档目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String fontsPath()</code>
+							<p class="desc">获取字体目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String applicationsPath()</code>
+							<p class="desc">获取程序目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String musicPath()</code>
+							<p class="desc">获取音乐目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String moviesPath()</code>
+							<p class="desc">获取视频目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String picturesPath()</code>
+							<p class="desc">获取图片目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String tempPath()</code>
+							<p class="desc">获取临时送文件目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String homePath()</code>
+							<p class="desc">获取用户目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String dataPath()</code>
+							<p class="desc">获取本应用程序数据目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String cachePath()</code>
+							<p class="desc">获取本应用程序缓存目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String genericDataPath()</code>
+							<p class="desc">获取应用程序数据目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String genericCachePath()</code>
+							<p class="desc">获取应用程序缓存目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String runtimePath()</code>
+							<p class="desc">获取运行通信文件目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String configPath()</code>
+							<p class="desc">获取本应用程序配置文件目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String genericConfigPath()</code>
+							<p class="desc">获取应用程序配置文件目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String downloadPath()</code>
+							<p class="desc">获取下载目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String absPath(String path = '')</code>
+							<p class="desc">获取绝对路径</p>
+						</li>
+						<li class="item">
+							<code class="name">String normPath(String path = '')</code>
+							<p class="desc">格式化路径</p>
+						</li>
+						<li class="item">
+							<code class="name">String localUrl(String path = '')</code>
+							<p class="desc">获取网页用路径</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isAbsPath(String path)</code>
+							<p class="desc">判断是否绝对路径</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isFile(String filename)</code>
+							<p class="desc">文件存在</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isDir(String dirname)</code>
+							<p class="desc">目录存在</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean exists(String path)</code>
+							<p class="desc">路径存在</p>
+						</li>
+						<li class="item">
+							<code class="name">int fileSize(String filename)</code>
+							<p class="desc">文件大小</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean mkfile(String filename)</code>
+							<p class="desc">创建文件</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean mkdir(String dirname)</code>
+							<p class="desc">创建目录</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean copy(String path1, String path2)</code>
+							<p class="desc">拷贝</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean move(String path1, String path2)</code>
+							<p class="desc">移动文件</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean remove(String path)</code>
+							<p class="desc">删除文件</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean explore(String path)</code>
+							<p class="desc">在资源管理器中显示文件，只测试过Windows</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.codec</h2>
+					<p class="sub-title">编码模块</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于弥补JavaScript所不支持的编码解码。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">String base64Encode(String data)</code>
+							<p class="desc">Base64编码</p>
+						</li>
+						<li class="item">
+							<code class="name">String base64Decode(String data)</code>
+							<p class="desc">Base64解码</p>
+						</li>
+						<li class="item">
+							<code class="name">String md5(String data)</code>
+							<p class="desc">md5编码</p>
+						</li>
+						<li class="item">
+							<code class="name">String sha1(String data)</code>
+							<p class="desc">sha1编码</p>
+						</li>
+						<li class="item">
+							<code class="name">String sha224(String data)</code>
+							<p class="desc">sha224编码</p>
+						</li>
+						<li class="item">
+							<code class="name">String sha256(String data)</code>
+							<p class="desc">sha256编码</p>
+						</li>
+						<li class="item">
+							<code class="name">String sha384(String data)</code>
+							<p class="desc">sha384编码</p>
+						</li>
+						<li class="item">
+							<code class="name">String sha512(String data)</code>
+							<p class="desc">sha512编码</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">Window</h2>
+					<p class="sub-title">窗口类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于创建新窗口。</p>
+				</section>
+				<section>
+					<h3>Properties</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">int x</code>
+							<p class="desc">窗口横坐标</p>
+						</li>
+						<li class="item">
+							<code class="name">int y</code>
+							<p class="desc">窗口纵坐标</p>
+						</li>
+						<li class="item">
+							<code class="name">int width</code>
+							<p class="desc">窗口宽度</p>
+						</li>
+						<li class="item">
+							<code class="name">int height</code>
+							<p class="desc">窗口高度</p>
+						</li>
+						<li class="item">
+							<code class="name">int maximumWidth</code>
+							<p class="desc">窗口最小宽度</p>
+						</li>
+						<li class="item">
+							<code class="name">int maximumHeight</code>
+							<p class="desc">窗口最小高度</p>
+						</li>
+						<li class="item">
+							<code class="name">int minimumWidth</code>
+							<p class="desc">窗口最大宽度</p>
+						</li>
+						<li class="item">
+							<code class="name">int minimumHeight</code>
+							<p class="desc">窗口最大高度</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean enabled</code>
+							<p class="desc">窗口可用状态</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean visible</code>
+							<p class="desc">窗口是否可见</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">Window(String url = '', int width = null, int height = null)</code>
+							<p class="desc" onclick="HAE.Window().show()">创建新窗口</p>
+						</li>
+						<li class="item">
+							<code class="name">Object opener()</code>
+							<p class="desc" onclick="alert(HAE.app.opener())">获取父窗口对象</p>
+						</li>
+						<li class="item">
+							<code class="name">void alert(int msec = 0)</code>
+							<p class="desc">任务栏闪烁</p>
+						</li>
+						<li class="item">
+							<code class="name">String eval(String javaScript)</code>
+							<p class="desc">执行简单的JS，用于某些情况下窗口之间的通信</p>
+						</li>
+						<li class="item">
+							<code class="name">String capture(boolean fullScreen = false, String filename = '')</code>
+							<p class="desc" onclick="window.open().document.write('<img src=\'data:image/png;base64,' + HAE.app.capture(true) + '\'>');">截图</p>
+						</li>
+						<li class="item">
+							<code class="name">void showInspector()</code>
+							<p class="desc" onclick="HAE.app.showInspector()">打开开发者工具</p>
+						</li>
+						<li class="item">
+							<code class="name">void hideInspector()</code>
+							<p class="desc" onclick="HAE.app.hideInspector()">关闭开发者工具</p>
+						</li>
+						<li class="item">
+							<code class="name">void findText(String text)</code>
+							<p class="desc" onclick="HAE.app.findText('text')">搜索文本</p>
+						</li>
+						<li class="item">
+							<code class="name">void setIcon(String icon)</code>
+							<p class="desc">设置窗口图标</p>
+						</li>
+						<li class="item">
+							<code class="name">void setModified(boolean modified)</code>
+							<p class="desc">设置内容是否已被修改（标题中需要有[*]标志）</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isModified()</code>
+							<p class="desc">获取内容是否已被修改</p>
+						</li>
+						<li class="item">
+							<code class="name">void setModal(boolean modal)</code>
+							<p class="desc">设置是否模态</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isModal()</code>
+							<p class="desc" onclick="alert(HAE.app.isModal())">获取是否模态</p>
+						</li>
+						<li class="item">
+							<code class="name">void setShowInTaskbar(boolean showInTaskbar)</code>
+							<p class="desc">设置是否在任务栏中显示</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isShowInTaskbar()</code>
+							<p class="desc" onclick="alert(HAE.app.isShowInTaskbar())">获取是否在任务栏中显示</p>
+						</li>
+						<li class="item">
+							<code class="name">void setStaysOnTop(boolean staysOnTop)</code>
+							<p class="desc">设置窗口是否置顶</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isStaysOnTop()</code>
+							<p class="desc" onclick="alert(HAE.app.isStaysOnTop())">获取窗口是否置顶</p>
+						</li>
+						<li class="item">
+							<code class="name">void setFrameless(boolean frameless)</code>
+							<p class="desc">设置是否显示系统边框</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isFrameless()</code>
+							<p class="desc" onclick="alert(HAE.app.isFrameless())">获取是否显示系统边框</p>
+						</li>
+						<li class="item">
+							<code class="name">void setTransBackground(boolean transBackground)</code>
+							<p class="desc">设置是否背景透明</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isTransBackground()</code>
+							<p class="desc" onclick="alert(HAE.app.isTransBackground())">获取是否背景透明</p>
+						</li>
+						<li class="item">
+							<code class="name">void setTransMouseEvent(boolean transMouseEvent)</code>
+							<p class="desc">设置是否鼠标事件穿透</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isTransMouseEvent()</code>
+							<p class="desc" onclick="alert(HAE.app.isTransMouseEvent())">获取是否是否鼠标事件穿透</p>
+						</li>
+						<li class="item">
+							<code class="name">void setOpacity(float opacity)</code>
+							<p class="desc">设置窗口不透明度</p>
+						</li>
+						<li class="item">
+							<code class="name">float getOpacity()</code>
+							<p class="desc" onclick="alert(HAE.app.getOpacity())">获取窗口不透明度</p>
+						</li>
+						<li class="item">
+							<code class="name">void setResizable(boolean resizable)</code>
+							<p class="desc" onclick="HAE.app.setResizable(! HAE.app.isResizable())">设置大小是否可调整</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isResizable()</code>
+							<p class="desc" onclick="alert(HAE.app.isResizable())">获取大小是否可调整</p>
+						</li>
+						<li class="item">
+							<code class="name">void setResizableX(boolean resizableX)</code>
+							<p class="desc" onclick="HAE.app.setResizableX(! HAE.app.isResizableX())">设置宽度是否可调整</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isResizableX()</code>
+							<p class="desc" onclick="alert(HAE.app.isResizableX())">获取宽度是否可调整</p>
+						</li>
+						<li class="item">
+							<code class="name">void setResizableY(boolean resizableY)</code>
+							<p class="desc" onclick="HAE.app.setResizableY(! HAE.app.isResizableY())">设置高度是否可调整</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isResizableY()</code>
+							<p class="desc" onclick="alert(HAE.app.isResizableY())">获取高度是否可调整</p>
+						</li>
+						<li class="item">
+							<code class="name">void setMinimizable(boolean minimizable)</code>
+							<p class="desc">设置是否可最小化</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isMinimizable()</code>
+							<p class="desc" onclick="alert(HAE.app.isMinimizable())">获取是否可最小化</p>
+						</li>
+						<li class="item">
+							<code class="name">void setMaximizable(boolean maximizable)</code>
+							<p class="desc">设置是否可最大化</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isMaximizable()</code>
+							<p class="desc" onclick="alert(HAE.app.isMaximizable())">获取是否可最大化</p>
+						</li>
+						<li class="item">
+							<code class="name">void setClosable(boolean closable)</code>
+							<p class="desc">设置是否可关闭</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isClosable()</code>
+							<p class="desc" onclick="alert(HAE.app.isClosable())">获取是否可关闭</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isMinimized()</code>
+							<p class="desc" onclick="alert(HAE.app.isMinimized())">获取是否已最小化</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isMaximized()</code>
+							<p class="desc" onclick="alert(HAE.app.isMaximized())">获取是否已最大化</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isFullScreen()</code>
+							<p class="desc" onclick="alert(HAE.app.isFullScreen())">获取是否已最大化</p>
+						</li>
+						<li class="item">
+							<code class="name">void minimize()</code>
+							<p class="desc" onclick="HAE.app.minimize()">最小化</p>
+						</li>
+						<li class="item">
+							<code class="name">void normalize()</code>
+							<p class="desc" onclick="HAE.app.normalize()">还原</p>
+						</li>
+						<li class="item">
+							<code class="name">void maximize()</code>
+							<p class="desc" onclick="HAE.app.maximize()">最大化</p>
+						</li>
+						<li class="item">
+							<code class="name">void showFullScreen()</code>
+							<p class="desc" onclick="HAE.app.showFullScreen()">全屏</p>
+						</li>
+						<li class="item">
+							<code class="name">void setPos(int x, int y)</code>
+							<p class="desc">设置窗口坐标</p>
+						</li>
+						<li class="item">
+							<code class="name">void setSize(int width, int height)</code>
+							<p class="desc">设置窗口尺寸</p>
+						</li>
+						<li class="item">
+							<code class="name">void setMinSize(int width, int height)</code>
+							<p class="desc">设置窗口最小尺寸</p>
+						</li>
+						<li class="item">
+							<code class="name">void setMaxSize(int width, int height)</code>
+							<p class="desc">设置窗口最大尺寸</p>
+						</li>
+						<li class="item">
+							<code class="name">void setResizerSize(int size)</code>
+							<p class="desc">设置尺寸控制大小</p>
+						</li>
+						<li class="item">
+							<code class="name">Object getResizerSize()</code>
+							<p class="desc" onclick="alert(HAE.app.getResizerSize());">获取尺寸控制大小</p>
+						</li>
+						<li class="item">
+							<code class="name">void setResizerMargin(int margin)</code>
+							<p class="desc">设置尺寸控制边距</p>
+						</li>
+						<li class="item">
+							<code class="name">Object getResizerMargin()</code>
+							<p class="desc" onclick="alert(HAE.app.getResizerMargin());">获取尺寸控制边距</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isDraging()</code>
+							<p class="desc" onclick="alert(HAE.app.isDraging())">是否正在拖动</p>
+						</li>
+						<li class="item">
+							<code class="name">void dragStart()</code>
+							<p class="desc">开始拖动</p>
+						</li>
+						<li class="item">
+							<code class="name">void dragStop()</code>
+							<p class="desc">结束拖动</p>
+						</li>
+						<li class="item">
+							<code class="name">void activate()</code>
+							<p class="desc">窗口获取焦点</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isActive()</code>
+							<p class="desc" onclick="alert(HAE.app.isActive())">窗口是否已获得焦点</p>
+						</li>
+						<li class="item">
+							<code class="name">void setEnabled(boolean enabled)</code>
+							<p class="desc">设置窗口可用状态</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isEnabled()</code>
+							<p class="desc" onclick="alert(HAE.app.isEnabled())">窗口是否可用</p>
+						</li>
+						<li class="item">
+							<code class="name">void setVisible(boolean visible)</code>
+							<p class="desc">设置窗口可见状态</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isVisible()</code>
+							<p class="desc" onclick="alert(HAE.app.isVisible())">窗口是否显示</p>
+						</li>
+						<li class="item">
+							<code class="name">void show()</code>
+							<p class="desc">显示窗口</p>
+						</li>
+						<li class="item">
+							<code class="name">void hide()</code>
+							<p class="desc">隐藏窗口</p>
+						</li>
+						<li class="item">
+							<code class="name">void close()</code>
+							<p class="desc" onclick="HAE.app.close()">关闭窗口</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">show()</code>
+							<p class="desc">窗口显示事件</p>
+						</li>
+						<li class="item">
+							<code class="name">hide()</code>
+							<p class="desc">窗口隐藏事件</p>
+						</li>
+						<li class="item">
+							<code class="name">focus()</code>
+							<p class="desc">窗口获得焦点事件</p>
+						</li>
+						<li class="item">
+							<code class="name">blur()</code>
+							<p class="desc">窗口失去焦点事件</p>
+						</li>
+						<li class="item">
+							<code class="name">close()</code>
+							<p class="desc">窗口关闭事件</p>
+						</li>
+						<li class="item">
+							<code class="name">move(int x, int y, int oldX, int oldY)</code>
+							<p class="desc">窗口移动事件</p>
+						</li>
+						<li class="item">
+							<code class="name">resize(int width, int height, int oldWidth, int oldHeight)</code>
+							<p class="desc">窗口大小变化事件</p>
+						</li>
+						<li class="item">
+							<code class="name">statechange()</code>
+							<p class="desc">窗口状态变化事件</p>
+						</li>
+						<li class="item">
+							<code class="name">mouseenter()</code>
+							<p class="desc">鼠标进入事件</p>
+						</li>
+						<li class="item">
+							<code class="name">mouseleave()</code>
+							<p class="desc">鼠标离开事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.Dialog</h2>
+					<p class="sub-title">对话框类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">继承于Window类，对话框将置于父窗口上方。</p>
+				</section>
+				<section>
+					<h3>Properties</h3>
+					<ul class="list">
+						<li class="item">详见Window类。</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">Dialog(String url = '', int width = null, int height = null)</code>
+							<p class="desc" onclick="HAE.Dialog().show()">创建新对话框</p>
+						</li>
+						<li class="item">详见Window类。</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">详见Window类。</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.FileDialog</h2>
+					<p class="sub-title">文件选择对话框类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于创建文件选择对话框。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">FileDialog(String caption = '', String directory = '')</code>
+							<p class="desc" onclick="alert(new HAE.FileDialog().exec() || '未选中文件')">创建新对话框</p>
+						</li>
+						<li class="item">
+							<code class="name">void setCaption(String caption)</code>
+							<p class="desc">设置对话框标题</p>
+						</li>
+						<li class="item">
+							<code class="name">void setDirectory(String directory)</code>
+							<p class="desc">设置对话框目录</p>
+						</li>
+						<li class="item">
+							<code class="name">void setAcceptMode(int acceptMode)</code>
+							<p class="desc">设置打开、保存模式</p>
+						</li>
+						<li class="item">
+							<code class="name">void setFileMode(int fileMode)</code>
+							<p class="desc">设置文件选择模式</p>
+						</li>
+						<li class="item">
+							<code class="name">void setDefaultSuffix(String defaultSuffix)</code>
+							<p class="desc">设置默认保存扩展名</p>
+						</li>
+						<li class="item">
+							<code class="name">void selectFile(String filename)</code>
+							<p class="desc">设置默认选中文件</p>
+						</li>
+						<li class="item">
+							<code class="name">void setFilters(String filters)</code>
+							<p class="desc">选中过滤器</p>
+						</li>
+						<li class="item">
+							<code class="name">void addFilter(String newFilter)</code>
+							<p class="desc">添加过滤器</p>
+						</li>
+						<li class="item">
+							<code class="name">void selectFilter(String defFilter)</code>
+							<p class="desc">设置默认过滤器</p>
+						</li>
+						<li class="item">
+							<code class="name">String exec()</code>
+							<p class="desc">显示文件选择对话框</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.Menu</h2>
+					<p class="sub-title">菜单类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于创建菜单。</p>
+				</section>
+				<section>
+					<h3>Properties</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">String title</code>
+							<p class="desc">菜单标题</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean enabled</code>
+							<p class="desc">可用状态</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean visible</code>
+							<p class="desc">是否可见</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">Menu(String title = '', String icon = '')</code>
+							<p class="desc" onclick="if(! window.menu){menu = HAE.Menu();menu.addItem(HAE.MenuItem('菜单项'));}menu.exec()">创建菜单</p>
+						</li>
+						<li class="item">
+							<code class="name">void setTitle(String text)</code>
+							<p class="desc">设置菜单标题</p>
+						</li>
+						<li class="item">
+							<code class="name">void setIcon(String icon)</code>
+							<p class="desc">设置菜单图标</p>
+						</li>
+						<li class="item">
+							<code class="name">void addItem(item = null)</code>
+							<p class="desc">添加子菜单、菜单项或分割线（默认为分割线）</p>
+						</li>
+						<li class="item">
+							<code class="name">void exec(x = null, y = null)</code>
+							<p class="desc">显示菜单（默认为鼠标位置）</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.MenuItem</h2>
+					<p class="sub-title">菜单项类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于创建菜单项。</p>
+				</section>
+				<section>
+					<h3>Properties</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">String text</code>
+							<p class="desc">菜单项文字</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean checkable</code>
+							<p class="desc">菜单项是否可选</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean checked</code>
+							<p class="desc">菜单项是否选中</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean enabled</code>
+							<p class="desc">菜单项可用状态</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean visible</code>
+							<p class="desc">菜单项是否可见</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">MenuItem(String text, String icon = '', boolean checkable = false)</code>
+							<p class="desc" onclick="if(! window.menu){menu = HAE.Menu();menu.addItem(HAE.MenuItem('菜单项'));}menu.exec()">创建菜单项</p>
+						</li>
+						<li class="item">
+							<code class="name">void setText(String text)</code>
+							<p class="desc">设置菜单项文字</p>
+						</li>
+						<li class="item">
+							<code class="name">void setIcon(String icon)</code>
+							<p class="desc">设置菜单项图标</p>
+						</li>
+						<li class="item">
+							<code class="name">void setCheckable(boolean checkable)</code>
+							<p class="desc">设置菜单项可选性</p>
+						</li>
+						<li class="item">
+							<code class="name">void setShortcut(String shortcut)</code>
+							<p class="desc">设置菜单项快捷键</p>
+						</li>
+						<li class="item">
+							<code class="name">setEnabled(boolean enabled)</code>
+							<p class="desc">设置可用性</p>
+						</li>
+						<li class="item">
+							<code class="name">setChecked(boolean checked)</code>
+							<p class="desc">设置是否选中</p>
+						</li>
+						<li class="item">
+							<code class="name">toggle()</code>
+							<p class="desc">切换选中状态</p>
+						</li>
+						<li class="item">
+							<code class="name">hover()</code>
+							<p class="desc">触发鼠标经过事件</p>
+						</li>
+						<li class="item">
+							<code class="name">trigger()</code>
+							<p class="desc">触发鼠标选中事件</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">hover</code>
+							<p class="desc">鼠标经过事件</p>
+						</li>
+						<li class="item">
+							<code class="name">trigger</code>
+							<p class="desc">菜单项选中事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.TrayIcon</h2>
+					<p class="sub-title">系统托盘图标类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于创建系统托盘图标。</p>
+				</section>
+				<section>
+					<h3>Properties</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">String toolTip</code>
+							<p class="desc">工具提示</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean enabled</code>
+							<p class="desc">可用状态</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean visible</code>
+							<p class="desc">是否可见</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">TrayIcon(String toolTip = '', String icon = '')</code>
+							<p class="desc" onclick="if(! window.tray){tray = HAE.TrayIcon();tray.show();}tray.showMessage('HAE', 'TrayIcon')">创建系统托盘图标</p>
+						</li>
+						<li class="item">
+							<code class="name">void setToolTip(String toolTip)</code>
+							<p class="desc">设置工具提示</p>
+						</li>
+						<li class="item">
+							<code class="name">void setIcon(String icon)</code>
+							<p class="desc">设置图标</p>
+						</li>
+						<li class="item">
+							<code class="name">void setContextMenu(HAE.Menu menu)</code>
+							<p class="desc">设置右键菜单</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isVisible()</code>
+							<p class="desc">获取是否可见</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean supportsMessages()</code>
+							<p class="desc">获取是否支持消息弹泡</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean isSystemTrayAvailable()</code>
+							<p class="desc">获取是否支持系统托盘图标</p>
+						</li>
+						<li class="item">
+							<code class="name">void showMessage(String title, String message, String icon = '', int msec = 10000)</code>
+							<p class="desc" onclick="if(! window.tray){tray = HAE.TrayIcon();tray.show();}tray.showMessage('HAE', 'TrayIcon')">显示托盘消息</p>
+						</li>
+						<li class="item">
+							<code class="name">void setVisible(boolean visible)</code>
+							<p class="desc">设置可见性</p>
+						</li>
+						<li class="item">
+							<code class="name">void show()</code>
+							<p class="desc">显示</p>
+						</li>
+						<li class="item">
+							<code class="name">void hide()</code>
+							<p class="desc">隐藏</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">activate(int reason)</code>
+							<p class="desc">托盘图标激活事件<br>reason {1: Unknown, 2: Context, 3: DoubleClick, 4: Trigger, 5: MiddleClick}</p>
+						</li>
+						<li class="item">
+							<code class="name">messageclick()</code>
+							<p class="desc">托盘消息点击事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.File</h2>
+					<p class="sub-title">文件读写类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于读写文件。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">File(String filename, String mode = 'r', String encoding = 'utf-8')</code>
+							<p class="desc" onclick="alert(HAE.File('manifest.json').readText());">创建文件读写对象</p>
+						</li>
+						<li class="item">
+							<code class="name">String readText(int size = -1)</code>
+							<p class="desc">读取文本（默认读取全部）</p>
+						</li>
+						<li class="item">
+							<code class="name">String readBase64(int size = -1)</code>
+							<p class="desc">读取Base64形式数据（默认读取全部）</p>
+						</li>
+						<li class="item">
+							<code class="name">String readTextLine(int size = -1)</code>
+							<p class="desc">读取文本行（默认读取全部）</p>
+						</li>
+						<li class="item">
+							<code class="name">String readBase64Line(int size = -1)</code>
+							<p class="desc">读取行Base64数据（默认读取全部）</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean writeText(String data)</code>
+							<p class="desc">写入文本数据</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean writeBase64(String data)</code>
+							<p class="desc">写入Base64数据</p>
+						</li>
+						<li class="item">
+							<code class="name">void seek(int offset, int whence = 0)</code>
+							<p class="desc">移动文件指针位置whence {0： start, 1: current, 2: end}</p>
+						</li>
+						<li class="item">
+							<code class="name">int tell()</code>
+							<p class="desc">获取文件指针位置</p>
+						</li>
+						<li class="item">
+							<code class="name">void close()</code>
+							<p class="desc">关闭文件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.Downloader</h2>
+					<p class="sub-title">文件下载类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用于创建文件下载进程。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">Downloader(String url, String filename = null, boolean resume = false)</code>
+							<p class="desc">创建文件下载进程（resume：是否断点续传）</p>
+						</li>
+						<li class="item">
+							<code class="name">String getFilename()</code>
+							<p class="desc">获取文件路径</p>
+						</li>
+						<li class="item">
+							<code class="name">void start()</code>
+							<p class="desc">开始下载任务</p>
+						</li>
+						<li class="item">
+							<code class="name">void stop()</code>
+							<p class="desc">停止下载任务</p>
+						</li>
+						<li class="item">
+							<code class="name">void cancel()</code>
+							<p class="desc">取消下载任务</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">start()</code>
+							<p class="desc">开始事件</p>
+						</li>
+						<li class="item">
+							<code class="name">progress(int loaded, int total)</code>
+							<p class="desc">进度变化事件</p>
+						</li>
+						<li class="item">
+							<code class="name">finish(int total)</code>
+							<p class="desc">完成事件</p>
+						</li>
+						<li class="item">
+							<code class="name">error(int errno, str message)</code>
+							<p class="desc">错误事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.Process</h2>
+					<p class="sub-title">子进程类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用以创建子进程并实现进程间通信。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">Process(String encoding = null)</code>
+							<p class="desc">创建子进程</p>
+						</li>
+						<li class="item">
+							<code class="name">void start(String command)</code>
+							<p class="desc">启动进程</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean waitForStarted(int msec = 30000)</code>
+							<p class="desc">等待进程开始</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean waitForFinished(int msec = 30000)</code>
+							<p class="desc">等待进程完成</p>
+						</li>
+						<li class="item">
+							<code class="name">void setStdInFile(String filename)</code>
+							<p class="desc">设置输入文件</p>
+						</li>
+						<li class="item">
+							<code class="name">void setStdOutFile(String filename)</code>
+							<p class="desc">设置输出文件</p>
+						</li>
+						<li class="item">
+							<code class="name">void setStdErrFile(String filename)</code>
+							<p class="desc">设置错误输出文件</p>
+						</li>
+						<li class="item">
+							<code class="name">void setStdOutProcess(HAE.Process process)</code>
+							<p class="desc">设置输出进程</p>
+						</li>
+						<li class="item">
+							<code class="name">void send(String data)</code>
+							<p class="desc">写入信息</p>
+						</li>
+						<li class="item">
+							<code class="name">int state()</code>
+							<p class="desc">获取状态码</p>
+						</li>
+						<li class="item">
+							<code class="name">String stateStr()</code>
+							<p class="desc">获取状态信息</p>
+						</li>
+						<li class="item">
+							<code class="name">int errno()</code>
+							<p class="desc">获取错误码</p>
+						</li>
+						<li class="item">
+							<code class="name">String errorStr()</code>
+							<p class="desc">获取错误信息</p>
+						</li>
+						<li class="item">
+							<code class="name">int exitCode()</code>
+							<p class="desc">获取退出码</p>
+						</li>
+						<li class="item">
+							<code class="name">int exitStatus()</code>
+							<p class="desc">获取退出状态码</p>
+						</li>
+						<li class="item">
+							<code class="name">String exitStatusStr()</code>
+							<p class="desc">获取退出状态信息</p>
+						</li>
+						<li class="item">
+							<code class="name">String program()</code>
+							<p class="desc">获取进程名</p>
+						</li>
+						<li class="item">
+							<code class="name">String argumentList()</code>
+							<p class="desc">获取参数列表</p>
+						</li>
+						<li class="item">
+							<code class="name">String arguments()</code>
+							<p class="desc">获取参数</p>
+						</li>
+						<li class="item">
+							<code class="name">void setWorkingDirectory(String directory)</code>
+							<p class="desc">设置工作目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String workingDirectory()</code>
+							<p class="desc">获取工作目录</p>
+						</li>
+						<li class="item">
+							<code class="name">String systemEnvironment()</code>
+							<p class="desc">获取环境变量</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">start()</code>
+							<p class="desc">启动事件</p>
+						</li>
+						<li class="item">
+							<code class="name">error(int errno, str message)</code>
+							<p class="desc">错误事件</p>
+						</li>
+						<li class="item">
+							<code class="name">statechange(int state, str message)</code>
+							<p class="desc">状态变化事件</p>
+						</li>
+						<li class="item">
+							<code class="name">stdout(str message)</code>
+							<p class="desc">标准输出事件</p>
+						</li>
+						<li class="item">
+							<code class="name">stderr(str message)</code>
+							<p class="desc">标准错误事件</p>
+						</li>
+						<li class="item">
+							<code class="name">finish(int exitCode, int exitStatus, str message)</code>
+							<p class="desc">完成事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.SocketServer</h2>
+					<p class="sub-title">套接字服务端类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">用以创建套接字服务端。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">SocketServer(String encoding = 'utf-8', int timeout = null)</code>
+							<p class="desc">创建套接字服务端</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean listen(port)</code>
+							<p class="desc">监听端口</p>
+						</li>
+						<li class="item">
+							<code class="name">void close()</code>
+							<p class="desc">停止监听</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">open()</code>
+							<p class="desc">启动事件</p>
+						</li>
+						<li class="item">
+							<code class="name">connect(HAE.SocketConn conn)</code>
+							<p class="desc">连接事件</p>
+						</li>
+						<li class="item">
+							<code class="name">message(HAE.SocketConn conn, String message)</code>
+							<p class="desc">消息接收事件</p>
+						</li>
+						<li class="item">
+							<code class="name">disconnect(HAE.SocketConn conn)</code>
+							<p class="desc">连接断开事件</p>
+						</li>
+						<li class="item">
+							<code class="name">close()</code>
+							<p class="desc">服务端关闭事件</p>
+						</li>
+						<li class="item">
+							<code class="name">error(int, String message)</code>
+							<p class="desc">错误事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.SocketConn</h2>
+					<p class="sub-title">套接字连接类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">SocketConn实例由SocketServer接收到连接后产生，无法主动实例化。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">int send(message)</code>
+							<p class="desc">发送数据</p>
+						</li>
+						<li class="item">
+							<code class="name">void close()</code>
+							<p class="desc">关闭连接</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">message(String messge)</code>
+							<p class="desc">消息接收事件</p>
+						</li>
+						<li class="item">
+							<code class="name">close()</code>
+							<p class="desc">连接关闭事件</p>
+						</li>
+						<li class="item">
+							<code class="name">error(int errno, String messge)</code>
+							<p class="desc">错误事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+			<article class="article">
+				<header class="titles">
+					<h2 class="title">HAE.SocketClient</h2>
+					<p class="sub-title">套接字客户端类</p>
+				</header>
+				<section>
+					<h3>Introdution</h3>
+					<p class="intro">HTML5中使用的是WebSocket协议，该类用以创建普通Socket客户端。</p>
+				</section>
+				<section>
+					<h3>Methods</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">SocketClient(String encoding = 'utf-8')</code>
+							<p class="desc">创建套接字客户端</p>
+						</li>
+						<li class="item">
+							<code class="name">boolean connect(String host, int port)</code>
+							<p class="desc">连接Socket服务端</p>
+						</li>
+						<li class="item">
+							<code class="name">int send(String message)</code>
+							<p class="desc">发送数据</p>
+						</li>
+						<li class="item">
+							<code class="name">void close()</code>
+							<p class="desc">关闭连接</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Events</h3>
+					<ul class="list">
+						<li class="item">
+							<code class="name">open()</code>
+							<p class="desc">连接事件</p>
+						</li>
+						<li class="item">
+							<code class="name">message(String message)</code>
+							<p class="desc">消息接收事件</p>
+						</li>
+						<li class="item">
+							<code class="name">close()</code>
+							<p class="desc">关闭事件</p>
+						</li>
+						<li class="item">
+							<code class="name">error(int errno, String message)</code>
+							<p class="desc">错误事件</p>
+						</li>
+					</ul>
+				</section>
+			</article>
+		</div>
+	</div>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>

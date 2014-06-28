@@ -1,0 +1,230 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Login Demo</title>
+	<style type="text/css">
+	body{
+		margin: 0;
+		font-size: 12px;
+		font-family: Tahoma, '微软雅黑';
+	}
+	input, textarea, button{
+		font-size: 12px;
+		font-family: Tahoma, '微软雅黑';
+	}
+	a{
+		color: #323232;
+		cursor: pointer;
+	}
+	#login{
+		width: 250px;
+		margin: 50px;
+		overflow: hidden;
+		border-radius: 3px;
+		background: #a5a5a5;
+		box-sizing: border-box;
+		border: 1px solid #616161;
+		text-shadow: 1px 1px 1px #eee;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+	}
+	#login .header{
+		color: #666;
+		padding: 15px;
+		cursor: default;
+		text-align: right;
+		border-top: 1px solid #fcfcfc;
+		border-bottom: 1px solid #6c6c6c;
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#f0f0f0), to(#cbcbcb));
+		-webkit-user-select: none;
+	}
+	#login .title{
+		margin: 0;
+		color: #383838;
+		font-size: 20px;
+		font-weight: normal;
+		font-family: Monaco;
+	}
+	#login .form{
+		color: #222;
+		border: 1px solid #b1b2b3;
+	}
+	#login .form .input{
+		color: #eee;
+		margin: 8px;
+		padding: 5px;
+		height: 28px;
+		border: none;
+		outline: none;
+		margin-bottom: 0;
+		background: #4a4c51;
+		box-sizing: border-box;
+		width: calc(100% - 16px);
+	}
+	#login .form .remember{
+		vertical-align: middle;
+		margin: 15px 4px 15px 8px;
+	}
+	#login .form label{
+		vertical-align: middle;
+	}
+	#login .form button{
+		float: right;
+		width: 50px;
+		height: 25px;
+		margin: 10px 5px;
+		border-radius: 3px;
+		vertical-align: middle;
+		border: 1px solid #7c7c7d;
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), color-stop(0.8, #dfdfdf), to(#eee));
+	}
+	#login .form button:hover{
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), color-stop(0.8, #e8e8e8), to(#eee));
+	}
+	#login .form button:active{
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), color-stop(0.8, #ccc), to(#ddd));
+	}
+	#weibo{
+		top: 0;
+		left: 0;
+		width: 250px;
+		margin: 50px;
+		display: none;
+		font-size: 30px;
+		cursor: pointer;
+		overflow: hidden;
+		background: #ddd;
+		line-height: 100px;
+		position: absolute;
+		text-align: center;
+		border-radius: 3px;
+		border: 1px solid #616161;
+		text-shadow: 1px 1px 1px #eee;
+		box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+		-webkit-user-select: none;
+	}
+	.rotate-in{
+		-webkit-animation: rotate-in .8s;
+		-webkit-animation-fill-mode: forwards;
+	}
+	.shake{
+		-webkit-animation: shake .6s;
+	}
+	.flip-in{
+		-webkit-animation: flip-in .2s;
+		-webkit-animation-fill-mode: forwards;
+	}
+	.flip-out{
+		-webkit-animation: flip-out .2s;
+		-webkit-animation-fill-mode: forwards;
+	}
+	.flip-exit{
+		-webkit-animation: flip-exit .8s;
+		-webkit-animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes rotate-in{
+		0%   {-webkit-transform: perspective(600px) scale(.3) rotate(720deg); opacity: 0;}
+		100% {-webkit-transform: perspective(600px) scale(1) rotate(0);}
+	}
+	@-webkit-keyframes shake {
+		0%, 100% {-webkit-transform: translateX(0);}
+		10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
+		20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+	}
+	@-webkit-keyframes flip-in{
+		0%   {-webkit-transform: perspective(600px) rotateY(-90deg);}
+		100%   {-webkit-transform: perspective(600px) rotateY(0);}
+	}
+	@-webkit-keyframes flip-out{
+		0%   {-webkit-transform: perspective(600px) rotateY(0);}
+		100% {-webkit-transform: perspective(600px) rotateY(90deg);}
+	}
+	@-webkit-keyframes flip-exit{
+		0%   {-webkit-transform: perspective(600px) rotateX(0);}
+		40%  {-webkit-transform: perspective(600px) rotateX(80deg);}
+		100% {-webkit-transform: perspective(600px) rotateX(80deg) translateY(-1000px); opacity: 0;}
+	}
+	</style>
+</head>
+<body>
+	<div id="login">
+		<div class="header">
+			<h1 class="title">Hybrid app Engine</h1>
+			——轻量级Web桌面应用引擎
+		</div>
+		<form class="form">
+			<input type="text" class="input" id="account" placeholder="邮箱/会员账号/手机号" />
+			<input type="password" class="input" id="password" placeholder="密码" />
+			<input type="checkbox" class="remember" id="remember" /><label for="remember">自动登录</label>
+			<button type="button" class="close">退出</button>
+			<button type="submit">登录</button>
+		</form>
+	</div>
+	<div id="weibo">
+		Welcome!<br />
+		╰（￣▽￣）╭
+	</div>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script>
+	try{
+		var app = HAE.app;
+		app.setSize(350, 350);
+		app.setFrameless(true);
+		app.setTransBackground(true);
+		app.show();
+	}catch(e){}
+	$('body').bind({
+		mousedown: function(e){
+			if(e.which == 1 && ! $(e.target).is('input, button, textarea, a, label, select, option')){
+				window.app && app.dragStart();
+			}
+		}
+	});
+	$('#login .form').bind({
+		submit: function(){
+			var flag = true;
+			$('#account, #password').each(function(){
+				if($.trim($(this).val()) == ''){
+					animate(this, 'shake');
+					flag = false;
+				}
+			});
+			flag && flipToggle('#login', '#weibo');
+			return false;
+		}
+	});
+	$('#login .close').bind({
+		click: function(){
+			animate('#login', 'flip-exit', function(){
+				if(window.app){
+					app.close();
+				}else{
+					window.close();
+				}
+			});
+		}
+	});
+	$('#weibo').bind({
+		click: function(){
+			flipToggle('#weibo', '#login');
+			return false;
+		}
+	});
+	animate('#login', 'rotate-in');
+	function animate(selector, animation, callback){
+		$(selector).addClass(animation).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+			$(this).removeClass(animation);
+			callback && callback();
+		});
+	}
+	function flipToggle(selector1, selector2){
+		animate(selector1, 'flip-out', function(){
+			$(selector1).hide();
+			$(selector2).show();
+			animate(selector2, 'flip-in');
+		});
+	}
+	</script>
+</body>
+</html>

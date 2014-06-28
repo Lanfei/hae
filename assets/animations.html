@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animate Demo</title>
+	<link rel="stylesheet" href="css/animate.min.css">
+	<style type="text/css">
+	::-webkit-scrollbar{
+		width: 8px;
+		background: rgba(0, 0, 0, .2);
+	}
+	::-webkit-scrollbar-thumb{
+		border-radius: 4px;
+		background: rgba(0, 0, 0, .2);
+	}
+	::-webkit-scrollbar-thumb:hover{
+		background: rgba(0, 0, 0, .5);
+	}
+	::-webkit-scrollbar-thumb:active{
+		background: rgba(0, 0, 0, .3);
+	}
+	body{
+		color: #555;
+		cursor: default;
+		overflow: hidden;
+		font-family: 'Segoe UI', 'Microsoft Yahei', '微软雅黑';
+	}
+	#stage{
+		top: 200px;
+		left: 200px;
+		right: 200px;
+		bottom: 200px;
+		overflow: hidden;
+		position: absolute;
+		border-radius: 2px;
+		box-shadow: 0 0 25px #aaa;
+		background: rgba(255, 255, 255, .95);
+	}
+	#element{
+		top: 35px;
+		left: 25px;
+		right: 25px;
+		bottom: 20px;
+		color: #555;
+		outline: none;
+		background: #ddd;
+		position: absolute;
+		border-radius: 4px;
+		box-sizing: border-box;
+		border: 1px solid #ccc;
+		font-family: 'Segoe UI', 'Microsoft Yahei', '微软雅黑';
+	}
+	#element option{
+		color: #777;
+		background: #e6e9ea;
+	}
+	#element option:nth-child(2n){
+		background: #f5f6f7;
+	}
+	#options{
+		right: 0;
+		margin: 5px 20px;
+		position: absolute;
+	}
+	#options a{
+		color: #555;
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	</style>
+</head>
+<body>
+	<div id="stage">
+		<div id="options">
+			Target: 
+			<a class="target">stage</a>
+			<a class="close">close</a>
+		</div>
+		<select id="element" size="5">
+			<optgroup label="Attention Seekers">
+				<option value="bounce">bounce</option>
+				<option value="flash">flash</option>
+				<option value="pulse">pulse</option>
+				<option value="rubberBand">rubberBand</option>
+				<option value="shake">shake</option>
+				<option value="swing">swing</option>
+				<option value="tada">tada</option>
+				<option value="wobble">wobble</option>
+			</optgroup>
+			<optgroup label="Bouncing Entrances">
+				<option value="bounceIn">bounceIn</option>
+				<option value="bounceInDown">bounceInDown</option>
+				<option value="bounceInLeft">bounceInLeft</option>
+				<option value="bounceInRight">bounceInRight</option>
+				<option value="bounceInUp">bounceInUp</option>
+			</optgroup>
+			<optgroup label="Bouncing Exits">
+				<option value="bounceOut">bounceOut</option>
+				<option value="bounceOutDown">bounceOutDown</option>
+				<option value="bounceOutLeft">bounceOutLeft</option>
+				<option value="bounceOutRight">bounceOutRight</option>
+				<option value="bounceOutUp">bounceOutUp</option>
+			</optgroup>
+			<optgroup label="Fading Entrances">
+				<option value="fadeIn">fadeIn</option>
+				<option value="fadeInDown">fadeInDown</option>
+				<option value="fadeInDownBig">fadeInDownBig</option>
+				<option value="fadeInLeft">fadeInLeft</option>
+				<option value="fadeInLeftBig">fadeInLeftBig</option>
+				<option value="fadeInRight">fadeInRight</option>
+				<option value="fadeInRightBig">fadeInRightBig</option>
+				<option value="fadeInUp">fadeInUp</option>
+				<option value="fadeInUpBig">fadeInUpBig</option>
+			</optgroup>
+			<optgroup label="Fading Exits">
+				<option value="fadeOut">fadeOut</option>
+				<option value="fadeOutDown">fadeOutDown</option>
+				<option value="fadeOutDownBig">fadeOutDownBig</option>
+				<option value="fadeOutLeft">fadeOutLeft</option>
+				<option value="fadeOutLeftBig">fadeOutLeftBig</option>
+				<option value="fadeOutRight">fadeOutRight</option>
+				<option value="fadeOutRightBig">fadeOutRightBig</option>
+				<option value="fadeOutUp">fadeOutUp</option>
+				<option value="fadeOutUpBig">fadeOutUpBig</option>
+			</optgroup>
+			<optgroup label="Flippers">
+				<option value="flip">flip</option>
+				<option value="flipInX">flipInX</option>
+				<option value="flipInY">flipInY</option>
+				<option value="flipOutX">flipOutX</option>
+				<option value="flipOutY">flipOutY</option>
+			</optgroup>
+			<optgroup label="Lightspeed">
+				<option value="lightSpeedIn">lightSpeedIn</option>
+				<option value="lightSpeedOut">lightSpeedOut</option>
+			</optgroup>
+			<optgroup label="Rotating Entrances">
+				<option value="rotateIn">rotateIn</option>
+				<option value="rotateInDownLeft">rotateInDownLeft</option>
+				<option value="rotateInDownRight">rotateInDownRight</option>
+				<option value="rotateInUpLeft">rotateInUpLeft</option>
+				<option value="rotateInUpRight">rotateInUpRight</option>
+			</optgroup>
+			<optgroup label="Rotating Exits">
+				<option value="rotateOut">rotateOut</option>
+				<option value="rotateOutDownLeft">rotateOutDownLeft</option>
+				<option value="rotateOutDownRight">rotateOutDownRight</option>
+				<option value="rotateOutUpLeft">rotateOutUpLeft</option>
+				<option value="rotateOutUpRight">rotateOutUpRight</option>
+			</optgroup>
+			<optgroup label="Sliders">
+				<option value="slideInDown">slideInDown</option>
+				<option value="slideInLeft">slideInLeft</option>
+				<option value="slideInRight">slideInRight</option>
+				<option value="slideOutLeft">slideOutLeft</option>
+				<option value="slideOutRight">slideOutRight</option>
+				<option value="slideOutUp">slideOutUp</option>
+			</optgroup>
+			<optgroup label="Specials">
+				<option value="hinge">hinge</option>
+				<option value="rollIn">rollIn</option>
+				<option value="rollOut">rollOut</option>
+			</optgroup>
+		</select>
+	</div>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+	try{
+		var app = HAE.app;
+		app.setSize(700, 700);
+		app.setResizerMargin(200);
+		app.setFrameless(true);
+		app.setTransBackground(true);
+		app.show();
+	}catch(e){}
+	$.fn.extend({
+		cssAnimate: function(name, duration, easing, complete){
+			var option = {};
+			if(typeof duration == 'object'){
+				option = duration;
+			}else if(typeof duration == 'function'){
+				option.complete = duration;
+			}else{
+				option.duration = duration;
+				option.easing = easing;
+				option.complete = complete;
+			}
+			$(this).css({
+				'animation-name': '',
+				'animation-duration': option.duration + 'ms',
+				'animation-timing-function': option.easing,
+				'animation-delay': option.delay + 'ms',
+				'animation-iteration-count': option.count + '',
+				'animation-direction': option.direction,
+				'animation-play-state': option.state,
+				'animation-fill-mode': option.mode,
+			}).addClass(name).addClass('animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(e){
+				$(this).removeClass('animated');
+				option.complete && option.complete.call(this, e);
+			});
+			return this;
+		}
+	});
+	$('body').bind({
+		mousedown: function(e){
+			if(e.which == 1 && ! $(e.target).is('input, button, textarea, a, label, select, option')){
+				window.app && app.dragStart();
+			}
+		}
+	});
+	$('#stage').cssAnimate('flipInX', function(){
+		$(this).removeClass('flipInX');
+	});
+	$('#element').bind({
+		change: function(){
+			var name = $(this).val();
+			$('#' + ($(this).data('target') || 'stage')).cssAnimate(name, {
+				complete: function(e){
+					$(this).removeClass(name);
+				}
+			});
+		}
+	});
+	$('#options .target').bind({
+		click: function(){
+			var target = $('#element').data('target');
+			if(target == 'element'){
+				target = 'stage';
+			}else{
+				target = 'element';
+			}
+			$(this).text(target);
+			$('#element').data('target', target);
+		}
+	});
+	$('#options .close').bind({
+		click: function(){
+			$('#stage').cssAnimate('bounceOutUp', {
+				complete: function(e){
+					if(window.app){
+						app.close();
+					}else{
+						window.close();
+					}
+				}
+			});
+		}
+	});
+	</script>
+</body>
+</html>
