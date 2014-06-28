@@ -3,6 +3,8 @@ What
 
 HAE是一个轻量级的桌面Web应用程序引擎（Hybrid App Engine），它允许开发者使用HTML5，CSS3以及JavaScript等前端开发技术方便快速地进行桌面应用程序开发。
 
+![Hybrid App Engine](https://cloud.githubusercontent.com/assets/2156642/3420201/1118b348-fe9c-11e3-98f5-bb572b0c6ec6.png)
+
 Why
 ----
 
