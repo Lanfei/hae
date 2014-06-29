@@ -6,6 +6,17 @@ What
 
 HAE是一个轻量级的桌面Web应用程序引擎（Hybrid App Engine），它允许开发者使用HTML5，CSS3以及JavaScript等前端开发技术方便快速地进行桌面应用程序开发。
 
+**基于**
+
+ - [Python 3.4](https://www.python.org/downloads/release/python-340/)
+ - [PyQt 5.3](http://www.riverbankcomputing.co.uk/software/pyqt/download5)
+ - [cx_Freeze 4.3.3](http://sourceforge.net/projects/cx-freeze/files/4.3.3/)
+
+**二进制包**
+
+ - hae-1.0.0-winx32.zip
+ - [hae-1.0.0-winx64.zip](http://kc.cc/VMUw)
+
 ![Hybrid App Engine](https://cloud.githubusercontent.com/assets/2156642/3420201/1118b348-fe9c-11e3-98f5-bb572b0c6ec6.png)
 
 Why
@@ -15,14 +26,7 @@ Why
  - 易于调试
  - 无需编译
  - 跨平台
-
-Where
------
-
- - hae-1.0.0-winx32.zip
- - [hae-1.0.0-winx64.zip](http://kc.cc/VMUw)
  
-
 Whatever
 --------
 
