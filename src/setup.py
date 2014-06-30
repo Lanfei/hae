@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-import sys
-import sys
+import sys, assets
 from cx_Freeze import setup, Executable
 
 base = None
@@ -18,7 +18,8 @@ options = {
 		],
 		'include_files': [
 			'../assets',
-			'plugins',
+			'plugins/iconengines',
+			'plugins/mediaservice',
 			'qt.conf',
 			'manifest.json'
 		],
@@ -31,9 +32,9 @@ executables = [
 ]
 
 setup(
-	name = "Hybrid App Engine",
-	version = '1.0.0',
-	description = '轻量级的桌面Web应用程序引擎',
+	name = assets.manifest['name'],
+	version = assets.manifest['version'],
+	description = assets.manifest['description'],
 	options = options,
 	executables = executables
 )
