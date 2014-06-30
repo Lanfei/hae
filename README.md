@@ -14,7 +14,7 @@ HAE是一个轻量级的桌面Web应用程序引擎（Hybrid App Engine），它
 
 **二进制包**
 
- - hae-1.0.0-winx32.zip
+ - [hae-1.0.0-winx32.zip](http://kc.cc/VV2T)
  - [hae-1.0.0-winx64.zip](http://kc.cc/VMUw)
 
 ![Hybrid App Engine](https://cloud.githubusercontent.com/assets/2156642/3420201/1118b348-fe9c-11e3-98f5-bb572b0c6ec6.png)
