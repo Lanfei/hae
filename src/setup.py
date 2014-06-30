@@ -17,6 +17,7 @@ options = {
 			'PyQt5.QtPrintSupport'
 		],
 		'include_files': [
+			'../assets',
 			'plugins',
 			'qt.conf',
 			'manifest.json'
