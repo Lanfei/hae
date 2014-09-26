@@ -1,6 +1,6 @@
 {
 	"name": "Hybrid App Engine",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "轻量级的桌面Web应用程序引擎",
 	"path": "../assets/",
 	"icon": "../assets/img/icon.png",

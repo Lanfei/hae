@@ -4,13 +4,14 @@ import json
 import assets
 from webpage import WebPage
 from PyQt5.QtWebKitWidgets import QWebView
-from PyQt5.Qt import Qt, QWebSettings, QPainter, QImage, QMimeData, QDrag, QUrl
+from PyQt5.Qt import Qt, QApplication, QWebSettings, QPainter, QImage, QMimeData, QDrag, QUrl
 
 class WebView(QWebView):
 	def __init__(self, parent, url = ''):
 		super(WebView, self).__init__(parent)
 		self.draging = False
 		self.drag = QDrag(self)
+		self.dragStartPos = None
 		self.webPage = WebPage()
 		self.setPage(self.webPage)
 		self.mainFrame = self.page().mainFrame()
@@ -142,14 +143,16 @@ class WebView(QWebView):
 				# pixmap = hitTestResult.pixmap()
 				# pixmap.setMask(QBitmap.fromImage(pixmap.toImage()))
 				self.drag.setMimeData(mimeData)
+				self.dragStartPos = event.pos()
 				# self.drag.setPixmap(pixmap)
 				# self.drag.setHotSpot(QPoint(self.drag.pixmap().width() / 2, self.drag.pixmap().height() / 2))
 
 	def mouseMoveEvent(self, event):
 		if not self.parentWidget().isDraging():
 			super(WebView, self).mouseMoveEvent(event)
-			if self.drag.mimeData():
+			if self.dragStartPos and (event.pos() - self.dragStartPos).manhattanLength() >= QApplication.startDragDistance():
 				self.drag.exec()
+				self.dragStartPos = None
 				self.drag.setMimeData(None)
 		if not self.draging:
 			event.ignore()
@@ -157,6 +160,7 @@ class WebView(QWebView):
 	def mouseReleaseEvent(self, event):
 		self.draging = False
 		super(WebView, self).mouseReleaseEvent(event)
+		self.dragStartPos = None
 		self.drag.setMimeData(None)
 		event.ignore()
 
